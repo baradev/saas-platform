@@ -1,10 +1,19 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { Button } from '@/components/ui/button'
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+
 import {
   Form,
   FormControl,
@@ -15,7 +24,7 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { defaultValues } from '@/constants'
+import { defaultValues, transformationTypes } from '@/constants'
 import { CustomField } from './CustomField'
 
 export const formSchema = z.object({
@@ -29,7 +38,15 @@ export const formSchema = z.object({
 const TransformationForm = ({
   action,
   data = null,
+  userId,
+  type,
+  creditBalance,
 }: TransformationFormProps) => {
+  const transformationType = transformationTypes[type]
+  const [image, setImage] = useState(data)
+  const [newTransformation, setNewTransformation] =
+    useState<Transformations | null>(null)
+
   const initialValues =
     data && action === 'Update'
       ? {
@@ -51,6 +68,12 @@ const TransformationForm = ({
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values)
   }
+
+  const onSelectFieldHandler = (
+    value: string,
+    onChangeField: (value: string) => void
+  ) => {}
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8"></form>
@@ -61,6 +84,26 @@ const TransformationForm = ({
         className="w-full"
         render={({ field }) => <Input {...field} className="input-field" />}
       />
+      {type === 'fill' && (
+        <CustomField
+          control={form.control}
+          name="aspectRatio"
+          formLabel="Aspect Ratio"
+          className="w-full"
+          render={({ field }) => (
+            <Select>
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Theme" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="light">Light</SelectItem>
+                <SelectItem value="dark">Dark</SelectItem>
+                <SelectItem value="system">System</SelectItem>
+              </SelectContent>
+            </Select>
+          )}
+        />
+      )}
     </Form>
   )
 }
