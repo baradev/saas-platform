@@ -1,5 +1,6 @@
 # Imaginify
 
+  <img src="./public/logo-github.png" alt="Project Banner">
 An AI SaaS Platform
 
 Imaginify offers comprehensive image processing capabilities, integrates a secure payment infrastructure, and provides advanced image search functionalities. It supports multiple AI features, including image restoration, recoloring, object removal, generative filling, and background removal.
