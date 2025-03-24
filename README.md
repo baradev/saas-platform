@@ -7,14 +7,14 @@ Imaginify offers comprehensive image processing capabilities, integrates a secur
 
 ## Tech Stack
 
-- **Next.js**
-- **TypeScript**
-- **MongoDB**
-- **Clerk**
-- **Cloudinary**
-- **Stripe**
-- **Shadcn**
-- **TailwindCSS**
+- **Next.js** - React framework for building web applications
+- **TypeScript** - JavaScript with added syntax for types
+- **MongoDB** - NoSQL database
+- **Clerk** - Authentication and user management system
+- **Cloudinary** - Cloud-based image and video management platform
+- **Stripe** - Payment processing platform
+- **Shadcn** - Set of reusable and customizable React components
+- **TailwindCSS** - CSS framework
 
 ## Features
 
